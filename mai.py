@@ -20,7 +20,7 @@ def answer_question(context: str):
 
     # Generate an answer using the model
     with torch.no_grad():
-        output = model.generate(input_ids,num_return_sequences=1, no_repeat_ngram_size=2, top_k=50, top_p=0.95)
+        output = model.generate(input_ids,num_return_sequences=1,max_length=40, no_repeat_ngram_size=2, top_k=50, top_p=0.95)
         generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
 
     return {"answer": generated_text}
